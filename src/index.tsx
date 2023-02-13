@@ -55,7 +55,7 @@ export interface SearchProps {
  * Searches through a list of nodes based on the value on input powered by
  * the fuzzysort library
  */
-export default function Search({
+export  function Search({
   list,
   input,
   fallback,
