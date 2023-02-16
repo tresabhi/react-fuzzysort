@@ -83,7 +83,7 @@ export function Search({
       if (onFirstItemChange) onFirstItemChange(list[0]);
     } else {
       const results = go(value, list, { ...keyOptions, key: 'query' });
-      const resultNodes = results.map((result, index) => {
+      const resultNodes = results.map((result) => {
         return result.obj.node;
       });
 
