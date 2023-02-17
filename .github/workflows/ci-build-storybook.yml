@@ -42,4 +42,5 @@ jobs:
       - name: Archive storybook-static
         uses: actions/upload-artifact@v3
         with:
+          name: storybook-static
           path: storybook-static
