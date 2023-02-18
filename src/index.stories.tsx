@@ -24,9 +24,13 @@ function simpleList(size: number, generator: () => string) {
   return list;
 }
 
+function fullAddress() {
+  return `${faker.address.streetAddress()}, ${faker.address.city()}, ${faker.address.state()}, ${faker.address.country()}, ${faker.address.zipCode()}`;
+}
+
 export function Addresses1000() {
   const input = useRef<HTMLInputElement>(null);
-  const list = simpleList(1000, faker.address.streetAddress);
+  const list = simpleList(1000, fullAddress);
 
   return (
     <>
