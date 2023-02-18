@@ -1,6 +1,13 @@
 import { go } from 'fuzzysort';
 import debounce from 'lodash.debounce';
-import { Fragment, ReactNode, RefObject, useEffect, useState } from 'react';
+import {
+  Fragment,
+  ReactNode,
+  RefObject,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 
 /**
  * An item that can be searched through
@@ -74,11 +81,13 @@ export function Search({
   );
   const [children, setChildren] = useState(defaultList);
   let previousFirstItem: SearchItem | undefined = undefined;
+  let lastSearchHadNoResults = useRef(false);
 
   const handleChange = debounce((event: Event) => {
     const { value } = event.target as HTMLInputElement;
 
     if (value === '') {
+      lastSearchHadNoResults.current = false;
       setChildren(defaultList);
       if (onFirstItemChange) onFirstItemChange(list[0]);
     } else {
@@ -94,10 +103,11 @@ export function Search({
           setChildren([]);
         }
 
-        if (onNoResults) onNoResults();
+        if (onNoResults && !lastSearchHadNoResults.current) onNoResults();
         if (onFirstItemChange) onFirstItemChange(undefined);
 
         previousFirstItem = undefined;
+        lastSearchHadNoResults.current = true;
       } else {
         setChildren(resultNodes);
 
@@ -107,6 +117,8 @@ export function Search({
           onFirstItemChange(firstItem);
           previousFirstItem = firstItem;
         }
+
+        lastSearchHadNoResults.current = false;
       }
     }
   }, debounceTime);
