@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "start-storybook -p 6006",
     "build": "tsc && tsup",
+    "prepublishOnly": "npm run build",
     "preview": "vite preview",
     "build-storybook": "build-storybook",
     "lint": "tsc && eslint ./src"
