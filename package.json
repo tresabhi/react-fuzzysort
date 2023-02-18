@@ -1,7 +1,7 @@
 {
   "name": "react-fuzzysort",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "start-storybook -p 6006",

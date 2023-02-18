@@ -6,7 +6,7 @@ import {
   RefObject,
   useEffect,
   useRef,
-  useState,
+  useState
 } from 'react';
 
 /**
@@ -81,7 +81,7 @@ export function Search({
   );
   const [children, setChildren] = useState(defaultList);
   let previousFirstItem: SearchItem | undefined = undefined;
-  let lastSearchHadNoResults = useRef(false);
+  const lastSearchHadNoResults = useRef(false);
 
   const handleChange = debounce((event: Event) => {
     const { value } = event.target as HTMLInputElement;
