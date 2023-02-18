@@ -97,6 +97,10 @@ These are passed down as `props` to the `Search` component.
 
 # Changelogs
 
+## v1.0.1
+
+- Fixed several issues with `package.json`
+
 ## v1.0.0
 
 - Added React Fuzzysort
